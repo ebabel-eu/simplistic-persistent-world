@@ -1,0 +1,36 @@
+{
+  "name": "simplistic-persistent-world",
+  "version": "1.0.0",
+  "description": "Create a local, very simple persistent world with a Service Worker. Developed for Chrome browsers.",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:dev": "node ./node_modules/.bin/rollup --config rollup.config.dev.js",
+    "build:watch": "node ./node_modules/.bin/rollup --config rollup.config.dev.js --watch",
+    "build": "npm run build:dev",
+    "postinstall": "npm run build:dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ebabel-eu/simplistic-persistent-world.git"
+  },
+  "keywords": [
+    "persistent",
+    "service",
+    "worker"
+  ],
+  "author": "Nadjib Amar <hello@ebabel.eu>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ebabel-eu/simplistic-persistent-world/issues"
+  },
+  "homepage": "https://github.com/ebabel-eu/simplistic-persistent-world#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "rollup": "^0.55.3",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-node-resolve": "^3.0.2"
+  }
+}
