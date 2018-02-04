@@ -10,9 +10,6 @@ const timeLoop = (timestamp) => {
   // Update various game timers to trigger certain events.
   updateTimers(delta);
 
-  // Paint graphical elements.
-  // draw();
-
   lastRender = timestamp;
   window.requestAnimationFrame(timeLoop);
 };

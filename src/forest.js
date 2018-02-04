@@ -2,26 +2,37 @@
 
 import * as C from './constants';
 
+const gameCanvas = document.getElementById('game-canvas');
+const gameContext = gameCanvas.getContext('2d');
 const treesCounter = document.getElementById('trees-counter');
 
-let trees = parseInt(localStorage[C.STORAGE.TREES_COUNT]) || 12;
+let trees = localStorage[C.STORAGE.TREES] && JSON.parse(localStorage[C.STORAGE.TREES]) || C.FOREST.TREE.DEFAULT_LOCATIONS;
 
-const setTrees = (count) => {
-  trees = parseInt(count);
-  localStorage[C.STORAGE.TREES_COUNT] = trees;
-  treesCounter.textContent = trees;
+const addTree = (newTree) => {
+  trees.push(newTree);
+  localStorage[C.STORAGE.TREES] = JSON.stringify(trees);
+  treesCounter.textContent = trees.length;
 };
 
+const paintTree = (tree) => {
+  gameContext.drawImage(document.getElementById('pine-tree-png'), tree[0], tree[1], 32, 16);
+}
+
 const treeDies = (e) => {
-  if (trees >= 1) {
-    setTrees(trees - 1);
+  if (trees.length > C.FOREST.TREE.MIN) {
+    // todo: remove the tree that died.
   }
 
   return trees;
 }
 
 const treeBorn = (e) => {
-  setTrees(trees + 1);
+  if (trees.length <= C.FOREST.TREE.MAX) {
+    const newTree = [Math.round(Math.random() * 250), Math.round(Math.random() * 100)];
+    addTree(newTree);
+    paintTree(newTree);
+  }
+
   return trees;
 }
 
@@ -33,5 +44,8 @@ export default () => {
   // A new tree is born every second.
   document.addEventListener(C.EVENTS.TIMERS.ONE_SECOND, treeBorn);
 
-  setTrees(trees);
+  // Display all the current trees.
+  trees.map((tree) => {
+    paintTree(tree);
+  });
 };

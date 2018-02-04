@@ -1,19 +1,27 @@
 body {
   margin: 0;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #2042b2;
+  background-color: #5db7eb;
 }
 
 h1 {
   text-align: center;
 }
 
-#game {
-  background-color: aquamarine;
-  width: 100%;
-  min-height: 100px;
+#game-canvas {
+  background-color: #20b275;
+  width: 400px;
+  min-height: 400px;
+  margin: 0 auto;
+  display: block;
 }
 
 #main-status {
   text-align: center;
   font-weight: small;
+}
+
+.hidden {
+  display: none;
 }
