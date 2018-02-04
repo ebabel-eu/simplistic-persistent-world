@@ -2,23 +2,20 @@
 
 import * as C from './constants';
 import serviceWorkerRegistration from './service-worker-registration';
-import forest from './forest';
+import initializeWorld from './initialize-world';
+import timeLoop from './time-loop';
 
 const game = () => {
-  const mainStatus = document.getElementById('main-status');
+  const errorStatus = document.getElementById('error-status');
 
   serviceWorkerRegistration().then(
     () => {
-      mainStatus.textContent = 'game is ready to play';
+      initializeWorld();
 
-      // Initialize the world.
-      forest(document);
-
-      // Kill a tree.
-      const treeDies = new Event(C.EVENTS.FOREST.TREE_DIES);
-      document.dispatchEvent(treeDies);
+      // Last line of this scope: initialize the loop.
+      window.requestAnimationFrame(timeLoop);
     }, () => {
-      mainStatus.textContent = 'game failed to start';
+      errorStatus.textContent = 'game failed to start';
     });
 };
 
