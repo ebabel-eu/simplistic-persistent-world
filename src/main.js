@@ -1,11 +1,14 @@
 'use strict';
 
-import foo from './foo.js';
-
-// const worker = new Worker('sketchy.js', {type:'module'});
+import serviceWorkerRegistration, { get } from './service-worker-registration';
 
 const game = () => {
-  console.log(foo);
+  serviceWorkerRegistration().then(
+    (result) => {
+      console.log(result);
+    }, (error) => {
+      console.log(error);
+    });
 };
 
 game();
