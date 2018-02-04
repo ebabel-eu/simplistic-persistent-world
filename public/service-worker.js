@@ -1,7 +1,7 @@
 'use strict';
 
 // Set a name for the current cache
-const cacheName = 'v4';
+const cacheName = 'v5';
 
 // Default files to always cache
 const cacheFiles = [

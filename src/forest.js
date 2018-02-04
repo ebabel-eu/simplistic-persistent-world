@@ -4,14 +4,12 @@ import * as C from './constants';
 
 const gameCanvas = document.getElementById('game-canvas');
 const gameContext = gameCanvas.getContext('2d');
-const treesCounter = document.getElementById('trees-counter');
 
-let trees = localStorage[C.STORAGE.TREES] && JSON.parse(localStorage[C.STORAGE.TREES]) || C.FOREST.TREE.DEFAULT_LOCATIONS;
+let trees = localStorage[C.STORAGE.TREES] && JSON.parse(localStorage[C.STORAGE.TREES]) || [];
 
 const addTree = (newTree) => {
   trees.push(newTree);
   localStorage[C.STORAGE.TREES] = JSON.stringify(trees);
-  treesCounter.textContent = trees.length;
 };
 
 const paintTree = (tree) => {

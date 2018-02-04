@@ -24,7 +24,6 @@ export const STORAGE = {
 
 export const FOREST = {
   TREE: {
-    DEFAULT_LOCATIONS: [[120, 160], [80, 320], [80, 280], [320, 280]],
     MIN: 0,
     MAX: 20,
   },
