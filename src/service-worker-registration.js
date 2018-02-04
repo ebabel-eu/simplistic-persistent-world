@@ -1,21 +1,4 @@
-// Fetch a resource on the web asynchronously.
-export const get = (url) => {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) {
-          resolve(JSON.parse(xhr.responseText));
-        } else {
-          reject(xhr);
-        }
-      }
-    };
-
-    xhr.open("GET", url, true);
-    xhr.send();
-  });
-};
+'use strict';
 
 // Register the service worker.
 export default () => {
@@ -25,10 +8,10 @@ export default () => {
         scope: './'
       })
       .then((registration) => {
-        console.log(`Service Worker Registered: ${registration}`);
+        console.log('Service Worker is registered.');
       })
       .catch((err) => {
-        throw new Error(`Service Worker Failed to Register: ${err}`);
+        throw new Error('Service Worker failed to register', err);
       });
   }
 

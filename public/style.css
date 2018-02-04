@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Source Sans Pro', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 h1 {
@@ -11,4 +11,9 @@ h1 {
   background-color: aquamarine;
   width: 100%;
   min-height: 100px;
+}
+
+#main-status {
+  text-align: center;
+  font-weight: small;
 }

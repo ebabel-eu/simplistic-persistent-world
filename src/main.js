@@ -1,13 +1,24 @@
 'use strict';
 
-import serviceWorkerRegistration, { get } from './service-worker-registration';
+import * as C from './constants';
+import serviceWorkerRegistration from './service-worker-registration';
+import forest from './forest';
 
 const game = () => {
+  const mainStatus = document.getElementById('main-status');
+
   serviceWorkerRegistration().then(
-    (result) => {
-      console.log(result);
-    }, (error) => {
-      console.log(error);
+    () => {
+      mainStatus.textContent = 'game is ready to play';
+
+      // Initialize the world.
+      forest(document);
+
+      // Kill a tree.
+      const treeDies = new Event(C.EVENTS.FOREST.TREE_DIES);
+      document.dispatchEvent(treeDies);
+    }, () => {
+      mainStatus.textContent = 'game failed to start';
     });
 };
 
